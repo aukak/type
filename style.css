@@ -1,0 +1,31 @@
+html, body {
+  height: 100%;
+  user-select:none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #000;
+  font: 20vw/1 'Clash Display', sans-serif;
+  text-align: center;
+}
+
+.text {
+  white-space: nowrap;
+  filter: url(#filter) url(#turbulence);
+  outline: none;
+  user-select:none;
+  
+  &::selection {
+    background: rgba(0,0,0,.15);
+  }
+}
+
+svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}

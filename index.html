@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>type</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg>
+  <filter id="filter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.014 0.014" numOctaves="1" seed="20" stitchTiles="stitch" result="turbulence"/>
+    <feMorphology operator="dilate" radius="13" in="turbulence" result="morphology"/>
+    <feColorMatrix type="matrix" values="
+                                         1 0 0 0 0
+                                         0 1 0 0 0
+                                         0 0 1 0 0
+                                         0 0 0 500 -20" 
+                   in="morphology" result="colormatrix"/>
+    <feColorMatrix type="saturate" values="12" in="colormatrix" result="colormatrix1"/>
+    <feComposite in="merge3" in2="SourceGraphic" operator="in" result="colormatrix1"/>
+  </filter>
+  <filter id="turbulence">
+    <feTurbulence type="fractalNoise" baseFrequency="0.002" numOctaves="1" seed="1" result="noise">
+      <animate attributeName="baseFrequency" values="0.002;0.01;0.002" dur="20s" repeatCount="indefinite" 
+               />
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="80"> 
+      <animate attributeName="scale" values="80; 120; 80" dur="10s" repeatCount="indefinite" />
+               </feDisplacementMap>
+      </filter>
+    </svg>
+
+  <div class="text" contenteditable>
+    Type
+  </div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
